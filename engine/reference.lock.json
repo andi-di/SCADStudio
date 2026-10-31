@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "openscad": {
+    "repository": "https://github.com/openscad/openscad.git",
+    "revision": "9ba0cee7c94785fac0ca8dfe040b965a12a25ed1",
+    "version": "2026.10.31",
+    "backend": "Manifold",
+    "options": {
+      "HEADLESS": "ON",
+      "ENABLE_TESTS": "OFF",
+      "CMAKE_BUILD_TYPE": "Release",
+      "ENABLE_CGAL": "ON",
+      "ENABLE_MANIFOLD": "ON",
+      "ENABLE_EGL": "ON",
+      "ENABLE_GLX": "OFF",
+      "ENABLE_OSMESA": "OFF",
+      "USE_MIMALLOC": "OFF",
+      "EXPERIMENTAL": "OFF",
+      "USE_GLAD": "ON",
+      "USE_GLEW": "OFF",
+      "USE_BUILTIN_MANIFOLD": "ON",
+      "USE_BUILTIN_CLIPPER2": "ON",
+      "USE_BUILTIN_OPENCSG": "OFF",
+      "USE_MANIFOLD_TRIANGULATOR": "ON",
+      "USE_MANIFOLD_MINKOWSKI": "OFF",
+      "ENABLE_PYTHON": "OFF",
+      "OPENSCAD_VERSION": "2026.10.31",
+      "OPENSCAD_COMMIT": "9ba0cee"
+    },
+    "submodules": {
+      "libraries/MCAD": "1ea402208c3127ffb443931e9bb1681c191dacca",
+      "submodules/Clipper2": "c7f820f6a03fa91f189b866d27bf40dfe47abaa6",
+      "submodules/OpenCSG": "9bf122715213dca05e70993dd8672fe3aa36c518",
+      "submodules/manifold": "ce50d78021d64507f89e8c9fc2c2e51018117857",
+      "submodules/mimalloc": "30b2d9d89099bee08e9f67a1ffb3e12e7ba45227",
+      "submodules/sanitizers-cmake": "bcb1fc68616e9645ca5acea2992412606373ab04"
+    }
+  },
+  "bosl2": {
+    "repository": "https://github.com/BelfrySCAD/BOSL2.git",
+    "revision": "e3d614aef7552121f993b30a6c3e87f170a2f545",
+    "content_hash": "sha256:3e529ab971f11e8fc39acc1056d2894864c415dae783990546268b217220d2a0",
+    "hash_format": "sorted git tracked paths, each path length LE u64 + path UTF-8 bytes + content length LE u64 + content bytes"
+  },
+  "worker": {
+    "protocol_version": 1,
+    "overlay_license": "GPL-2.0-or-later",
+    "node_limit": 4096
+  }
+}

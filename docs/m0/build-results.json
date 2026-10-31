@@ -1,0 +1,5 @@
+{
+  "reference_sha256": "36ffe3b17064b479c8d2890142f4ea6f675ab2d834f9fea17ad900c58d54265a",
+  "worker_sha256": "c39295acc4020d406282da8199c2740e7662115c024417aae200f80f9f148480",
+  "overlay_replay": "all 8 generated files match a fresh checkout"
+}

@@ -30,3 +30,6 @@ Desktop.ini
 
 # Cargo.lock is intentionally tracked for this application.
 # Keep .cargo/config.toml, shaders, assets, and shared agent rules versioned.
+
+# Python setup-tool bytecode
+**/__pycache__/
