@@ -38,6 +38,6 @@ Teste Randfälle und Fehlerpfade; ergänze Regressionstests für Fehlerkorrektur
 
 ## Commits, Pull Requests und Konfiguration
 
-Git-Historie ist hier nicht auswertbar. Verwende kurze imperative Commit-Titel, etwa `Add settings panel`. Bewahre fremde Änderungen und halte Änderungen thematisch zusammenhängend.
+Verfasse alle Commit-Nachrichten auf Englisch und verwende Conventional Commits im Format `<type>[optional scope][!]: <description>`. Verwende kurze imperative Beschreibungen, etwa `feat(ui): add settings panel` oder `docs: add project specification`. Geeignete Typen sind beispielsweise `feat`, `fix`, `docs`, `refactor`, `test`, `build`, `ci`, `perf` und `chore`. Kennzeichne inkompatible Änderungen mit `!` oder einem `BREAKING CHANGE:`-Footer. Auch optionale Commit-Bodies und Footer müssen auf Englisch verfasst sein. Bewahre fremde Änderungen und halte Änderungen thematisch zusammenhängend.
 
 Pull Requests beschreiben Zweck, Verhalten und Validierung, verlinken relevante Issues und enthalten bei UI-Änderungen möglichst Screenshots. Dokumentiere Konfigurationsänderungen. Committe keine Zugangsdaten, Umgebungsmetadaten oder `target/`-Artefakte. Versioniere persistierte Datenformate bei Bedarf und behandle beschädigte Eingaben kontrolliert.
