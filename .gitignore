@@ -1,0 +1,32 @@
+# Rust build artifacts (including nested Cargo packages)
+**/target/
+**/*.rs.bk
+
+# Profiling and coverage output
+*.profraw
+*.profdata
+/coverage/
+/tarpaulin-report.html
+/lcov.info
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+/.aws/
+
+# Editor-local state; shared editor configuration stays versionable
+/.idea/
+*.swp
+*.swo
+*~
+
+# Operating system metadata
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Cargo.lock is intentionally tracked for this application.
+# Keep .cargo/config.toml, shaders, assets, and shared agent rules versioned.
