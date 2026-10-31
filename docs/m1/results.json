@@ -1,0 +1,34 @@
+{
+  "milestone": "M1",
+  "baseline_commit": "127652a",
+  "specification_version": "1.1",
+  "acceptance": {
+    "AT-002": "passed",
+    "AT-006": "passed",
+    "AT-007": "passed",
+    "AT-015": "passed",
+    "AT-016": "passed",
+    "AT-017": "passed"
+  },
+  "checks": {
+    "cargo_fmt_check": "passed",
+    "cargo_clippy_all_targets_all_features_deny_warnings": "passed",
+    "cargo_test_all_targets": {
+      "passed": 26,
+      "ignored": 1
+    },
+    "explicit_engine_m0": {
+      "passed": 1
+    },
+    "cargo_build_release": "passed",
+    "native_m1": "passed"
+  },
+  "full_product_acceptance": false,
+  "limits": [
+    "M1 lossless lexical/group structure is not the complete M3 structured language editor",
+    "M0 rendering and local engine setup retained",
+    "No crash recovery or power-loss durability acceptance",
+    "Polling and per-file replacement; no cross-process filesystem compare-and-swap",
+    "No complete project binding, performance, HiDPI or release acceptance"
+  ]
+}

@@ -7,4 +7,8 @@ pub mod offscreen;
 pub mod persistence;
 pub mod proof;
 pub mod render;
+pub mod syntax;
 pub mod ui;
+
+pub mod files;
+pub mod workbench;

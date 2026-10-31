@@ -24,6 +24,9 @@ pub fn plan_numeric_literal(
     {
         bail!("target is not an explicit numeric literal");
     }
+    if !crate::syntax::Syntax::parse(source).numeric_token(&range) {
+        bail!("stale_target: not a complete current numeric token in a safe region");
+    }
     Ok(ChangeSet {
         base: documents.revision(),
         origin: "parameter-form".into(),
@@ -75,4 +78,16 @@ pub fn source_range(
         bail!("source coordinates split UTF-8 or exceed document");
     }
     Ok(start..end)
+}
+
+/// Plans a literal edit against an explicitly revision-bound source target.
+pub fn plan_numeric_target(
+    documents: &Documents,
+    target: &crate::document::SourceRange,
+    value: f64,
+) -> Result<ChangeSet> {
+    if target.revision != documents.revision() {
+        bail!("stale_target: source revision changed; select the current token again");
+    }
+    plan_numeric_literal(documents, target.document, target.bytes.clone(), value)
 }

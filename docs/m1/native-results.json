@@ -1,0 +1,15 @@
+{
+  "actions": [
+    "preview",
+    "type_invalid_source",
+    "safe_literal_edit",
+    "undo",
+    "redo",
+    "external_conflict",
+    "keep_local",
+    "take_disk",
+    "save"
+  ],
+  "last_valid_preview_retained": true,
+  "passed": true
+}

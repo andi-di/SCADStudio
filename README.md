@@ -1,9 +1,9 @@
 # SCADStudio
 
 Nativer OpenSCAD-Arbeitsplatz in Rust mit egui/eframe. Der aktuelle Stand ist ein
-**M0-Architekturdurchstich**, keine vollständige Modellierungsanwendung. Verbindliches
+**M1-Dokumentarbeitsplatz** auf dem M0-Architekturdurchstich, keine vollständige Modellierungsanwendung. Verbindliches
 Zielbild: [SPECIFICATION.md](SPECIFICATION.md). Nachweise und Grenzen:
-[docs/m0/REPORT.md](docs/m0/REPORT.md).
+[M1-Bericht](docs/m1/REPORT.md) und [M0-Bericht](docs/m0/REPORT.md).
 
 ## Einrichtung unter Linux
 
@@ -51,8 +51,54 @@ Der technische Viewer zeigt Ergebnisgeometrie und Herkunftspfade. Die
 Ursprungsansicht erlaubt die Auswahl abgezogener Operanden, ohne den SCAD-Code zu
 verändern. Der Parameterknopf bearbeitet ausdrücklich den `base_height`-Literal
 im mitgelieferten Durchstich; Kommentare und die Formel bleiben erhalten. Die
-Vorschau wird danach als veraltet markiert und Auswahl gesperrt. Vollständige
-Syntaxbearbeitung, Undo/Redo und automatische Neuberechnung folgen in M1/M2.
+Vorschau wird danach als veraltet markiert und Auswahl gesperrt. Der M1-Dokumentarbeitsplatz ergänzt Undo/Redo und sichere Literaländerungen;
+vollständige grafische Sprache und automatische Neuberechnung folgen in M2/M3.
+
+## Dokumente bearbeiten (M1)
+
+```bash
+cargo run -- path/to/model.scad
+cargo run -- edit path/to/main.scad path/to/nested/maße.scad
+cargo run -- path/to/project.scadstudio.json
+```
+
+Code- und Literaländerungen, Undo und Redo verwenden denselben UI-unabhängigen
+Dokumentkern. Die Syntaxstruktur erhält alle Bytes; ihre aufklappbaren Zahlenknoten
+können als ausdrücklich gewählte Quellziele dienen. Veraltete Ziele werden gesperrt.
+`Ctrl+Z`, `Ctrl+Shift+Z`, `Ctrl+S` und `F5` bedienen Historie, Speichern und Vorschau.
+Die Vorschau benötigt die oben gebaute Engine an `target/m0-engine` und bleibt bei
+Fehlern sichtbar als veraltet markiert. M1 führt noch keine automatische Vorschau aus.
+
+Dateiänderungen werden jede Sekunde im Hintergrund geprüft. Der Konfliktvergleich
+zeigt Basis, lokalen Text und Datenträger mit den Optionen Übernehmen und Beibehalten.
+Für manuelles Zusammenführen lokal behalten, den Editor verwenden und speichern.
+Speichern tauscht jede Datei einzeln über eine temporäre Geschwisterdatei aus;
+Fehler erhalten den Dirty-Status. Gleichzeitige Eingabe bleibt während I/O erhalten.
+
+Metadaten verwenden Schema 1; beschädigte, unbekannte und zukünftige Formate
+werden nicht überschrieben. Quelldateien lassen sich weiter einzeln öffnen.
+Das M1-Fenster öffnet Metadaten mit der gesperrten Engine und ohne zusätzliche
+Bibliotheks-/Variantenbindungen. Andere Konfigurationen werden ausdrücklich
+abgelehnt und können separat als `.scad` geöffnet werden; ihre vollständige
+Anwendung gehört zu M3/M4. Es gibt noch keine Wiederherstellung nach Absturz.
+
+Der native M1-Nachweis verwendet ausschließlich eine **Wegwerfdatei**, da er
+auch externe Dateiänderungen simuliert:
+
+```bash
+mkdir -p target/m1-fixture
+python3 - <<'PYCODE'
+from pathlib import Path
+Path('target/m1-fixture/main.scad').write_bytes(
+    'h = 10;\r\n// Größe und Formel erhalten\r\ncube([h * 2, 20, 10]);\r\n'.encode())
+PYCODE
+SCADSTUDIO_M1_PROBE="$PWD/target/m1-native-new" \
+  cargo run -- edit target/m1-fixture/main.scad
+```
+
+Das neue Ausgabe-Verzeichnis enthält drei echte Fensterbilder und `report.json`.
+Ein vollständiger Durchlauf prüft Fehler/alte Vorschau, sichere Literaländerung,
+Undo/Redo, Konfliktvergleich, beide Übernahmeoptionen und Speichern.
 
 ## Prüfungen
 
